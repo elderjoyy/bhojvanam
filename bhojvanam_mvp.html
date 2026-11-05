@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#244b38">
+<title>Bhojvanam | Grow Food. Grow Forests. Grow Together.</title>
+<meta name="description" content="Bhojvanam brings people together to grow food-bearing trees, edible plants and community food forests.">
+<style>
+:root{
+  --forest:#244b38;--leaf:#557b52;--sage:#dfe9d9;--cream:#f7f5ed;
+  --clay:#bd7657;--clay-light:#f0dfd4;--ink:#25342b;--muted:#68766c;
+  --white:#fff;--line:#e5e7df;--shadow:0 16px 45px rgba(36,75,56,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent}
+.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(247,245,237,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(36,75,56,.10)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--forest)}
+.brand-name{display:flex;flex-direction:column;font-weight:850;letter-spacing:.04em;font-size:1.18rem;line-height:1.05}
+.brand-tagline{margin-top:4px;color:var(--clay);font-size:.65rem;font-weight:850;letter-spacing:.19em;line-height:1;text-transform:uppercase}
+.brand-mark{width:38px;height:38px;border-radius:13px;background:var(--forest);display:grid;place-items:center;color:white;font-size:21px}
+.navlinks{display:flex;align-items:center;gap:24px;font-size:.91rem;font-weight:650;color:#43564a}
+.navlinks a:hover{color:var(--clay)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 20px;background:var(--forest);color:white;font-weight:750;cursor:pointer;transition:.2s}
+.nav-cta:hover,.btn:hover{background:#183b2a;transform:translateY(-1px)}
+.btn.clay{background:var(--clay)}.btn.clay:hover{background:#a85f42}
+.btn.outline{background:transparent;color:var(--forest);border:1px solid rgba(36,75,56,.28)}
+.btn.outline:hover{background:var(--sage)}
+.menu-toggle{display:none;background:none;border:0;color:var(--forest);font-size:27px;cursor:pointer}
+.hero{padding:72px 0 68px;overflow:hidden;background:radial-gradient(circle at 82% 22%,#e4ead8 0,transparent 30%),linear-gradient(115deg,#f7f5ed 0%,#f2eee3 100%)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:52px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--leaf);font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.13em}
+.dot{width:8px;height:8px;background:var(--clay);border-radius:50%}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(2.8rem,6vw,5.2rem);line-height:1.02;letter-spacing:-.055em;color:var(--forest);margin:18px 0 22px}
+h1 em{font-style:normal;color:var(--clay)}
+.hero-copy{font-size:1.13rem;color:#5c6a60;max-width:560px;margin-bottom:28px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{margin-top:22px;font-size:.84rem;color:var(--muted)}
+.hero-art{position:relative;min-height:430px;border-radius:34px;overflow:hidden;background:#dce8d5;box-shadow:var(--shadow)}
+.hero-art img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block}
+.art-label{position:absolute;left:22px;bottom:22px;background:rgba(247,245,237,.94);padding:14px 18px;border-radius:16px;max-width:245px;box-shadow:0 8px 25px #183b2a20}
+.art-label strong{display:block;color:var(--forest)}
+.art-label span{font-size:.83rem;color:var(--muted)}
+.section{padding:82px 0}
+.section-head{max-width:690px;margin-bottom:36px}
+.section-head h2{font-size:clamp(2rem,4vw,3.15rem);line-height:1.1;letter-spacing:-.04em;color:var(--forest);margin:12px 0}
+.section-head p{color:var(--muted);font-size:1.04rem}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 28px rgba(36,75,56,.045);transition:.22s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card img{width:100%;height:205px;object-fit:cover;display:block;background:var(--sage)}
+.card-body{padding:24px}
+.card-icon{width:42px;height:42px;border-radius:14px;background:var(--sage);display:grid;place-items:center;font-size:21px;margin-bottom:14px}
+.card h3{color:var(--forest);font-size:1.24rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.94rem;margin-bottom:17px}
+.text-link{font-weight:800;color:var(--clay);font-size:.92rem}
+.band{background:var(--forest);color:#f7f5ed;padding:70px 0}
+.band-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px}
+.band h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-.04em;margin:12px 0 18px}
+.band p{color:#d4dfd3;font-size:1.03rem}
+.band .eyebrow{color:#d8b49f}
+.band-points{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.point{padding:18px;border:1px solid #ffffff30;border-radius:17px;background:#ffffff0b}
+.point b{display:block;font-size:1.05rem;margin-bottom:5px}
+.point span{font-size:.86rem;color:#d4dfd3}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{padding:25px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.step-num{font-size:.78rem;font-weight:850;color:var(--clay);letter-spacing:.12em}
+.step h3{color:var(--forest);margin:10px 0 8px}
+.step p{color:var(--muted);font-size:.93rem;margin:0}
+.join{background:var(--clay-light);padding:78px 0}
+.join-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:45px;align-items:start}
+.join h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.08;color:var(--forest);letter-spacing:-.04em;margin:12px 0 18px}
+.join-copy p{color:#665f57}
+.join-card{background:white;border-radius:24px;padding:30px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+label{font-weight:750;font-size:.88rem;color:var(--forest)}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid #dfe4dc;border-radius:12px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--leaf);box-shadow:0 0 0 3px #557b5220}
+textarea{min-height:100px;resize:vertical}
+.form-note{font-size:.79rem;color:var(--muted);margin:14px 0}
+.success{display:none;margin-top:15px;padding:13px;border-radius:12px;background:var(--sage);color:var(--forest);font-weight:700}
+footer{background:#193729;color:#eaf0e8;padding:42px 0 24px}
+.footer-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;padding-bottom:28px;border-bottom:1px solid #ffffff24}
+.footer-brand{font-size:1.2rem;font-weight:850;letter-spacing:.05em}
+.footer-tagline{display:block;color:#d8a48a;font-size:.68rem;font-weight:850;letter-spacing:.19em;line-height:1.2;margin:3px 0 0 29px}
+footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.88rem;color:#d8e2d7}
+.copyright{font-size:.78rem;color:#aebdaf;padding-top:20px}
+.mobile-join{display:none}
+@media(max-width:900px){
+ .navlinks{gap:14px;font-size:.83rem}.hero-grid{gap:28px}.cards{grid-template-columns:repeat(2,1fr)}
+ .band-grid,.join-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:700px){
+ .wrap{width:min(100% - 30px,560px)}.nav{height:66px}.menu-toggle{display:block}
+ .navlinks{display:none;position:absolute;top:66px;left:0;right:0;background:var(--cream);padding:16px 22px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+ .navlinks.open{display:flex}.navlinks a{padding:11px 4px;border-bottom:1px solid var(--line);font-size:.96rem}.navlinks .nav-cta{margin-top:14px;text-align:center}
+ .hero{padding:48px 0}.hero-grid{grid-template-columns:1fr;gap:30px}.hero-art,.hero-art img{min-height:300px}.hero-art{border-radius:24px}
+ .section{padding:60px 0}.cards{grid-template-columns:1fr}.card img{height:220px}
+ .band{padding:58px 0}.band-grid,.join-grid{grid-template-columns:1fr}.band-points{grid-template-columns:1fr 1fr}
+ .steps{grid-template-columns:1fr}.join{padding:58px 0}.join-card{padding:22px}
+ .form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+ .footer-top{flex-direction:column}.footer-links{gap:14px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap nav">
+  <a class="brand" href="#home" aria-label="Bhojvanam home"><span class="brand-mark">🌱</span><span class="brand-name">BHOJVANAM<span class="brand-tagline">FOOD FOREST</span></span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  <nav class="navlinks" id="navLinks">
+   <a href="#home">Home</a>
+   <a href="#home-growers">Home Growers</a>
+   <a href="#community-growers">Community Growers</a>
+   <a href="#food-forest-creators">Food Forest Creators</a>
+   <a href="#volunteers">Volunteers</a>
+   <a class="nav-cta" href="#join">Join Bhojvanam ↗</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow"><span class="dot"></span> A growing community movement</div>
+   <h1>Grow food.<br><em>Grow forests.</em><br>Grow together.</h1>
+   <p class="hero-copy">Imagine neighbourhoods, homes and open spaces filled with fruit-bearing trees and edible plants. Bhojvanam brings people together to make that vision grow.</p>
+   <div class="hero-actions">
+    <a class="btn" href="#join">Become part of Bhojvanam <span>→</span></a>
+    <a class="btn outline" href="#our-approach">Explore the idea</a>
+   </div>
+   <p class="hero-note">Start where you are — a terrace, a garden, a shared space or a piece of land.</p>
+  </div>
+  <div class="hero-art">
+   <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85" alt="Sunlight filtering through a lush green forest">
+   <div class="art-label"><strong>A forest that nourishes</strong><span>More food, more green spaces, stronger communities.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="our-approach">
+ <div class="wrap">
+  <div class="section-head center">
+   <div class="eyebrow"><span class="dot"></span> Many ways to participate</div>
+   <h2>Find your way to grow</h2>
+   <p>Whether you have a few pots, a shared garden or access to land, there is a place for you in the Bhojvanam community.</p>
+  </div>
+  <div class="cards">
+   <article class="card" id="home-growers">
+    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=85" alt="Plants growing in containers in a home garden">
+    <div class="card-body"><div class="card-icon">🪴</div><h3>Home Growers</h3><p>Grow fruit trees, herbs and edible plants on terraces, balconies, courtyards and in home gardens.</p><a class="text-link" href="#join">I want to grow at home →</a></div>
+   </article>
+   <article class="card" id="community-growers">
+    <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=900&q=85" alt="People tending a shared community garden">
+    <div class="card-body"><div class="card-icon">🤝</div><h3>Community Growers</h3><p>Bring neighbours, resident groups and friends together to create shared food-growing spaces.</p><a class="text-link" href="#join">Start growing together →</a></div>
+   </article>
+   <article class="card" id="food-forest-creators">
+    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85" alt="Green cultivated land with trees">
+    <div class="card-body"><div class="card-icon">🌳</div><h3>Food Forest Creators</h3><p>Landowners, farmers and institutions can explore transforming suitable spaces into diverse food forests.</p><a class="text-link" href="#join">Create a food forest →</a></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="volunteers">
+ <div class="wrap band-grid">
+  <div>
+   <div class="eyebrow"><span class="dot"></span> Hands in the soil, hope in the future</div>
+   <h2>Help plant and care for tomorrow's forests.</h2>
+   <p>Food forests need people: to plant, water, mulch, observe, learn and care for living spaces over time. Volunteers can help turn shared ideas into growing places.</p>
+   <a class="btn clay" href="#join">Volunteer with Bhojvanam →</a>
+  </div>
+  <div class="band-points">
+   <div class="point"><b>🌱 Planting</b><span>Join planting days and help establish edible landscapes.</span></div>
+   <div class="point"><b>💧 Caring</b><span>Support watering, mulching and ongoing maintenance.</span></div>
+   <div class="point"><b>📚 Learning</b><span>Share practical knowledge and learn from other growers.</span></div>
+   <div class="point"><b>🧑‍🤝‍🧑 Connecting</b><span>Bring more people into local growing initiatives.</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="wrap">
+  <div class="section-head center">
+   <div class="eyebrow"><span class="dot"></span> A simple beginning</div>
+   <h2>From interest to action</h2>
+   <p>We can start small, learn together and let the community grow step by step.</p>
+  </div>
+  <div class="steps">
+   <div class="step"><div class="step-num">STEP 01</div><h3>Share your interest</h3><p>Tell us whether you want to grow at home, create a shared space, offer land or volunteer.</p></div>
+   <div class="step"><div class="step-num">STEP 02</div><h3>Connect and learn</h3><p>Meet other interested people, exchange ideas and explore what can grow in your space.</p></div>
+   <div class="step"><div class="step-num">STEP 03</div><h3>Grow something together</h3><p>Take practical steps towards planting and caring for food-bearing plants and trees.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="join" id="join">
+ <div class="wrap join-grid">
+  <div class="join-copy">
+   <div class="eyebrow"><span class="dot"></span> Be part of the beginning</div>
+   <h2>Let's grow a food forest movement.</h2>
+   <p>Bhojvanam is bringing together people who want to make food-growing spaces part of everyday life.</p>
+   <p>Share a few details so we can understand your interest and explore ways to participate.</p>
+   <p><strong>One person. One plant. One community at a time.</strong></p>
+  </div>
+  <div class="join-card">
+   <h3 style="color:var(--forest);margin-bottom:5px">Register your interest</h3>
+   <p style="color:var(--muted);font-size:.9rem;margin-bottom:22px">This is an expression of interest, not a membership commitment.</p>
+   <form id="interestForm">
+    <div class="form-grid">
+     <div class="field"><label for="name">Your name *</label><input id="name" name="name" required placeholder="Enter your name"></div>
+     <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required inputmode="tel" placeholder="Enter mobile number"></div>
+     <div class="field"><label for="city">City / Area</label><input id="city" name="city" placeholder="e.g. Hyderabad, Kondapur"></div>
+     <div class="field"><label for="interest">I am interested as *</label>
+      <select id="interest" name="interest" required>
+       <option value="">Choose one</option><option>Home grower</option><option>Community grower</option><option>Food forest creator / landowner</option><option>Institution / organisation</option><option>Volunteer</option><option>Interested in learning</option>
+      </select>
+     </div>
+     <div class="field full"><label for="space">Do you have a space to grow?</label>
+      <select id="space" name="space"><option value="">Select if applicable</option><option>Terrace / balcony</option><option>Home garden</option><option>Community space</option><option>Farm / open land</option><option>Institutional land</option><option>Not currently</option></select>
+     </div>
+     <div class="field full"><label for="message">Anything you would like to share?</label><textarea id="message" name="message" placeholder="Tell us about your interests, ideas or available space..."></textarea></div>
+     <div class="field full"><button class="btn" type="submit">Submit interest →</button></div>
+    </div>
+    <p class="form-note">By submitting, you agree that Bhojvanam may contact you about this initiative. Please do not submit sensitive personal information.</p>
+    <div class="success" id="successMessage" role="status">Thank you for your interest! This demo form is working locally, but it is not yet connected to a database. Please contact the site administrator to complete registration.</div>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="footer-top">
+   <div><div class="footer-brand">🌱 BHOJVANAM</div><span class="footer-tagline">FOOD FOREST</span><p>Growing food-bearing plants, nurturing forests and bringing people together — one growing space at a time.</p></div>
+   <div class="footer-links"><a href="#home">Home</a><a href="#home-growers">Home Growers</a><a href="#community-growers">Community Growers</a><a href="#food-forest-creators">Food Forest Creators</a><a href="#volunteers">Volunteers</a><a href="#join">Join us</a></div>
+  </div>
+  <div class="copyright">© <span id="year"></span> Bhojvanam. Grow food. Grow forests. Grow together.</div>
+ </div>
+</footer>
+
+<script>
+const menuToggle=document.getElementById('menuToggle');
+const navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{
+ const open=navLinks.classList.toggle('open');
+ menuToggle.setAttribute('aria-expanded',String(open));
+ menuToggle.textContent=open?'×':'☰';
+});
+navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+ navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';
+}));
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('interestForm').addEventListener('submit',event=>{
+ event.preventDefault();
+ if(!event.target.reportValidity()) return;
+ document.getElementById('successMessage').style.display='block';
+ document.getElementById('successMessage').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>
