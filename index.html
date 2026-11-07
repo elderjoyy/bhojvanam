@@ -228,18 +228,18 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
     <div class="form-grid">
      <div class="field"><label for="name">Your name *</label><input id="name" name="name" required maxlength="100" placeholder="Enter your name"></div>
      <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required inputmode="tel" maxlength="20" placeholder="Enter mobile number"></div>
-     <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" maxlength="150" placeholder="Enter your email"></div>
-     <div class="field"><label for="city">City / Area</label><input id="city" name="city" maxlength="100" placeholder="e.g. Hyderabad, Kondapur"></div>
-     <div class="field"><label for="state">State</label><input id="state" name="state" maxlength="100" placeholder="Enter your state"></div>
+     <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" required maxlength="150" placeholder="Enter your email"></div>
+     <div class="field"><label for="city">City / Area *</label><input id="city" name="city" required maxlength="100" placeholder="e.g. Hyderabad, Kondapur"></div>
+     <div class="field"><label for="state">State *</label><input id="state" name="state" required maxlength="100" placeholder="Enter your state"></div>
      <div class="field"><label for="interest">I am interested as *</label>
       <select id="interest" name="interest" required>
        <option value="">Choose one</option><option>Home grower</option><option>Community grower</option><option>Food forest creator / landowner</option><option>Institution / organisation</option><option>Volunteer</option><option>Interested in learning</option>
       </select>
      </div>
-     <div class="field full"><label for="space">Do you have a space to grow?</label>
-      <select id="space" name="space"><option value="">Select if applicable</option><option>Terrace / balcony</option><option>Home garden</option><option>Community space</option><option>Farm / open land</option><option>Institutional land</option><option>Not currently</option></select>
+     <div class="field full"><label for="space">Do you have a space to grow? *</label>
+      <select id="space" name="space" required><option value="">Choose one * </option><option>Terrace / balcony</option><option>Home garden</option><option>Community space</option><option>Farm / open land</option><option>Institutional land</option><option>Not currently</option></select>
      </div>
-     <div class="field full"><label for="message">Anything you would like to share?</label><textarea id="message" name="message" maxlength="1500" placeholder="Tell us about your interests, ideas or available space..."></textarea></div>
+     <div class="field full"><label for="message">Anything you would like to share? *</label><textarea id="message" name="message" required maxlength="1500" placeholder="Tell us about your interests, ideas or available space..."></textarea></div>
      <div class="field full"><button class="btn" id="submitInterest" type="submit">Submit interest →</button></div>
     </div>
     <p class="form-note">By submitting, you agree that Bhojvanam may contact you about this initiative. Please do not submit sensitive personal information.</p>
