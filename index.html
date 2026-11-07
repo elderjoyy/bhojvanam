@@ -223,7 +223,11 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
   <div class="join-card">
    <h3 style="color:var(--forest);margin-bottom:5px">Register your interest</h3>
    <p style="color:var(--muted);font-size:.9rem;margin-bottom:22px">This is an expression of interest, not a membership commitment.</p>
-   <form id="interestForm">
+   <form id="interestForm" action="https://formsubmit.co/elderjoyy@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Enquiry from Bhojvanam">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://bhojvanam.elderjoyy.workers.dev/?submitted=1#join">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <div class="form-grid">
      <div class="field"><label for="name">Your name *</label><input id="name" name="name" required placeholder="Enter your name"></div>
      <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required inputmode="tel" placeholder="Enter mobile number"></div>
@@ -240,7 +244,7 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
      <div class="field full"><button class="btn" type="submit">Submit interest →</button></div>
     </div>
     <p class="form-note">By submitting, you agree that Bhojvanam may contact you about this initiative. Please do not submit sensitive personal information.</p>
-    <div class="success" id="successMessage" role="status">Thank you for your interest! This demo form is working locally, but it is not yet connected to a database. Please contact the site administrator to complete registration.</div>
+    <div class="success" id="successMessage" role="status">Thank you for your interest! Your enquiry has been submitted to Bhojvanam. We will contact you soon.</div>
    </form>
   </div>
  </div>
@@ -269,12 +273,12 @@ navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
  navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';
 }));
 document.getElementById('year').textContent=new Date().getFullYear();
-document.getElementById('interestForm').addEventListener('submit',event=>{
- event.preventDefault();
- if(!event.target.reportValidity()) return;
- document.getElementById('successMessage').style.display='block';
- document.getElementById('successMessage').scrollIntoView({behavior:'smooth',block:'nearest'});
-});
+const formParams = new URLSearchParams(window.location.search);
+if(formParams.get('submitted')==='1'){
+ const successMessage=document.getElementById('successMessage');
+ successMessage.style.display='block';
+ successMessage.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 </script>
 </body>
 </html>
