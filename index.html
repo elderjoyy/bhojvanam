@@ -223,18 +223,30 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
   <div class="join-card">
    <h3 style="color:var(--forest);margin-bottom:5px">Register your interest</h3>
    <p style="color:var(--muted);font-size:.9rem;margin-bottom:22px">This is an expression of interest, not a membership commitment.</p>
-   <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px">Complete the secure Google registration form below. Your response will be recorded in Bhojvanam Registrations.</p>
-   <iframe
-    src="https://docs.google.com/forms/d/e/1FAIpQLSeFQhGLtsjhj61HxclvAqdHjgQd79LFxrPRmoJPUc4LWYDJdQ/viewform?embedded=true"
-    title="Bhojvanam registration form"
-    width="100%"
-    height="1100"
-    frameborder="0"
-    marginheight="0"
-    marginwidth="0"
-    style="border:0;display:block;background:#fff"
-    loading="lazy">Loading registration form…</iframe>
-   <p class="form-note">Your response will be saved to Google Sheets. Please do not submit sensitive personal information. If the form does not load, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFQhGLtsjhj61HxclvAqdHjgQd79LFxrPRmoJPUc4LWYDJdQ/viewform" target="_blank" rel="noopener" style="color:var(--clay);font-weight:750">open the registration form in a new tab</a>.</p>
+   <form id="interestForm" action="https://script.google.com/macros/s/AKfycbzu-B7wThX3-oadL3j3kj2hT9tj_pyTq9_Q_YoDiC-yt3jNTQMF8lchZe3798aQ5AyQ/exec" method="POST" target="bhojvanamSubmitFrame">
+    <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+    <div class="form-grid">
+     <div class="field"><label for="name">Your name *</label><input id="name" name="name" required maxlength="100" placeholder="Enter your name"></div>
+     <div class="field"><label for="phone">Mobile number *</label><input id="phone" name="phone" required inputmode="tel" maxlength="20" placeholder="Enter mobile number"></div>
+     <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" maxlength="150" placeholder="Enter your email"></div>
+     <div class="field"><label for="city">City / Area</label><input id="city" name="city" maxlength="100" placeholder="e.g. Hyderabad, Kondapur"></div>
+     <div class="field"><label for="state">State</label><input id="state" name="state" maxlength="100" placeholder="Enter your state"></div>
+     <div class="field"><label for="interest">I am interested as *</label>
+      <select id="interest" name="interest" required>
+       <option value="">Choose one</option><option>Home grower</option><option>Community grower</option><option>Food forest creator / landowner</option><option>Institution / organisation</option><option>Volunteer</option><option>Interested in learning</option>
+      </select>
+     </div>
+     <div class="field full"><label for="space">Do you have a space to grow?</label>
+      <select id="space" name="space"><option value="">Select if applicable</option><option>Terrace / balcony</option><option>Home garden</option><option>Community space</option><option>Farm / open land</option><option>Institutional land</option><option>Not currently</option></select>
+     </div>
+     <div class="field full"><label for="message">Anything you would like to share?</label><textarea id="message" name="message" maxlength="1500" placeholder="Tell us about your interests, ideas or available space..."></textarea></div>
+     <div class="field full"><button class="btn" id="submitInterest" type="submit">Submit interest →</button></div>
+    </div>
+    <p class="form-note">By submitting, you agree that Bhojvanam may contact you about this initiative. Please do not submit sensitive personal information.</p>
+    <div class="success" id="successMessage" role="status">Thank you! Your Bhojvanam registration has been received.</div>
+    <div class="success" id="errorMessage" role="alert" style="display:none;background:#f8e7e2;color:#813e2d">We could not confirm your submission. Please try again or contact Bhojvanam.</div>
+   </form>
+   <iframe name="bhojvanamSubmitFrame" id="bhojvanamSubmitFrame" title="Registration submission response" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
   </div>
  </div>
 </section>
@@ -262,6 +274,28 @@ navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
  navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';
 }));
 document.getElementById('year').textContent=new Date().getFullYear();
+const registrationForm=document.getElementById('interestForm');
+const submitFrame=document.getElementById('bhojvanamSubmitFrame');
+const submitButton=document.getElementById('submitInterest');
+const successMessage=document.getElementById('successMessage');
+const errorMessage=document.getElementById('errorMessage');
+let registrationSubmitted=false;
+registrationForm.addEventListener('submit',()=>{
+ registrationSubmitted=true;
+ submitButton.disabled=true;
+ submitButton.textContent='Submitting…';
+ successMessage.style.display='none';
+ errorMessage.style.display='none';
+});
+submitFrame.addEventListener('load',()=>{
+ if(!registrationSubmitted)return;
+ registrationSubmitted=false;
+ successMessage.style.display='block';
+ submitButton.disabled=false;
+ submitButton.textContent='Submit another response →';
+ registrationForm.reset();
+ successMessage.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
 
 </script>
 </body>
