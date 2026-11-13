@@ -242,12 +242,12 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
    <div class="eyebrow"><span class="dot"></span> Be part of the beginning</div>
    <h2>Let's grow something meaningful together.</h2>
    <p>Are you a home grower, community group, institution with suitable land, landowner with a food forest, or organisation exploring a nature programme?</p>
-   <p>Tell us what you have in mind. Bhojvanam will understand your interests and explore a suitable next step — whether that is growing at home, joining an activity or discussing a partnership.</p>
+   <p>Tell us what you have in mind. Whether you grow at home, represent a community, manage land or are exploring a nature programme, we will review your enquiry and respond about a suitable next step.</p>
    <p><strong>Develop. Experience. Connect. Share.</strong></p>
   </div>
   <div class="join-card">
    <h3 style="color:var(--forest);margin-bottom:5px">Register your interest</h3>
-   <p style="color:var(--muted);font-size:.9rem;margin-bottom:22px">This is an expression of interest, not a membership commitment.</p>
+   <p style="color:var(--muted);font-size:.9rem;margin-bottom:22px">Choose the option closest to your interest. This form is an expression of interest, not a membership, booking or partnership commitment.</p>
    <form id="interestForm" action="https://script.google.com/macros/s/AKfycbzu-B7wThX3-oadL3j3kj2hT9tj_pyTq9_Q_YoDiC-yt3jNTQMF8lchZe3798aQ5AyQ/exec" method="POST" target="bhojvanamSubmitFrame">
     <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
     <div class="form-grid">
@@ -258,13 +258,32 @@ footer p{color:#c4d1c4;max-width:420px;font-size:.9rem;margin:9px 0 0}
      <div class="field"><label for="state">State *</label><input id="state" name="state" required maxlength="100" placeholder="Enter your state"></div>
      <div class="field"><label for="interest">I am interested as *</label>
       <select id="interest" name="interest" required>
-       <option value="">Choose one</option><option>Institution / organisation with land</option><option>Landowner / existing food-forest partner</option><option>Corporate programme enquiry</option><option>School / college programme enquiry</option><option>Interested in a food-forest experience</option><option>Home grower / community grower</option><option>Volunteer / practitioner</option><option>Other enquiry</option>
+       <option value="">Choose the closest option</option>
+       <option>Home grower – balcony / terrace / garden</option>
+       <option>Community grower / resident group</option>
+       <option>Institution / organisation with land</option>
+       <option>Landowner / existing food-forest location partner</option>
+       <option>Corporate nature & wellbeing programme</option>
+       <option>School / college nature-learning programme</option>
+       <option>Individual / family nature experience</option>
+       <option>Volunteer / growing practitioner</option>
+       <option>Other enquiry</option>
       </select>
      </div>
-     <div class="field full"><label for="space">Do you have a space to grow? *</label>
-      <select id="space" name="space" required><option value="">Choose one * </option><option>Institutional land</option><option>Farm / open land</option><option>Existing food forest</option><option>Community space</option><option>Home garden</option><option>Terrace / balcony</option><option>No land – interested in a programme or visit</option><option>Not currently</option></select>
+     <div class="field full"><label for="space">What kind of space or participation applies to you? *</label>
+      <select id="space" name="space" required>
+       <option value="">Choose the closest option</option>
+       <option>Balcony / terrace</option>
+       <option>Home garden / backyard</option>
+       <option>Community garden / shared neighbourhood space</option>
+       <option>Institutional land / campus</option>
+       <option>Farm / open land</option>
+       <option>Existing food forest / visitor location</option>
+       <option>No land – interested in learning, volunteering or an experience</option>
+       <option>Not sure yet</option>
+      </select>
      </div>
-     <div class="field full"><label for="message">Anything you would like to share? *</label><textarea id="message" name="message" required maxlength="1500" placeholder="Tell us about your interests, ideas or available space..."></textarea></div>
+     <div class="field full"><label for="message">Anything you would like to share? *</label><textarea id="message" name="message" required maxlength="1500" placeholder="For example: what you grow at home; the location and approximate size of land; your group size and preferred activity; or the skills you would like to contribute."></textarea></div>
      <div class="field full"><button class="btn" id="submitInterest" type="submit">Submit interest →</button></div>
     </div>
     <p class="form-note">By submitting, you agree that Bhojvanam may contact you about this initiative. Please do not submit sensitive personal information.</p>
